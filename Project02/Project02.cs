@@ -54,7 +54,7 @@ namespace Project01
         static char PromptForChar(string messagePrompt)
         {
             Console.Write(messagePrompt);
-            return Convert.ToChar(Console.ReadLine());
+            return Convert.ToChar(Console.ReadKey().KeyChar);
         }
         /// <summary>
         /// A method that given a message prompt will, print th emessage, allow the user to enter a value,
@@ -86,7 +86,7 @@ namespace Project01
         static void PressAnyKey()
         {
             Console.WriteLine("---PRESS ANY KEY TO CONTINUE---");
-            Console.ReadLine();
+            Console.ReadKey();
 
         }
         // game logic
@@ -256,34 +256,41 @@ namespace Project01
         {
             string playerOneName, playerTwoName;
             char playerOneChoice, playerTwoChoice;
-
+            char playTwo;
             PrintSmallHeader();
             Console.WriteLine();
             playerOneName = PromptForString("What is Player One's Name?: ");
             playerTwoName = PromptForString("What is Player Two's Name?: ");
             Console.WriteLine();
-            Console.Clear();
-            PrintSmallHeader();
-            Console.WriteLine($"{playerOneName} VERSUS {playerTwoName}");
-            PrintRules();
-            Console.WriteLine("--- Choose a value ---");
-            Console.WriteLine("Press 1 for a Rock Bottom");
-            Console.WriteLine("Press 2 for the Paper Tiger");
-            Console.WriteLine("Press 3 for Flying Leg Scissors");
+            
             do
             {
-                playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
-            } while ((playerOneChoice < 0) && (playerOneChoice > 3));
-            do
-            {
-                playerTwoChoice = PromptForCharHidden($"\n{playerTwoName} - > : ");
-            } while ((playerTwoChoice < 0) && (playerTwoChoice > 3));
-            Console.Clear();
-            PrintSmallHeader();
-            PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
-            Console.WriteLine("do you want to play again Y for Yes or N for No");
-            PressAnyKey();
-                        
+
+                Console.Clear(); 
+                PrintSmallHeader();
+                Console.WriteLine($"{playerOneName} VERSUS {playerTwoName}");
+                PrintRules();
+                Console.WriteLine("--- Choose a value ---");
+                Console.WriteLine("Press 1 for a Rock Bottom");
+                Console.WriteLine("Press 2 for the Paper Tiger");
+                Console.WriteLine("Press 3 for Flying Leg Scissors");
+                do
+                {
+                        playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
+                } while ((playerOneChoice == 1) || (playerOneChoice == 2) || (playerOneChoice == 3));
+                do
+                {
+                    playerTwoChoice = PromptForCharHidden($"\n{playerTwoName} - > : ");
+                } while ((playerTwoChoice == 1) || (playerTwoChoice == 2) || (playerTwoChoice == 3));
+                Console.Clear();
+                //PrintSmallHeader();
+                PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
+                //Console.WriteLine("do you want to play again Y for Yes or N for No - > ");
+                //playTwo = Console.ReadKey();
+                playTwo = PromptForChar("do you want to play again y for yes or n for no - >");
+            } while(playTwo == 'y');
+
+
             Console.Clear();
         }
         /// <summary>
@@ -295,7 +302,7 @@ namespace Project01
             PrintRules();
             PressAnyKey();
             Console.Clear();
-            ShowMenu();
+            //ShowMenu();
         }
         /// <summary>
         /// A method that gives players an option to end the game.
