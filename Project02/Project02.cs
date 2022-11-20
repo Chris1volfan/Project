@@ -171,11 +171,11 @@ namespace Project01
             }
             else if (playerChoice == '2')
             {
-                choice = "Flying Leg Scissors";
+                choice = "Paper Tigers";
             }
             else
             {
-                choice = "Paper Tiger";
+                choice = "Flying Leg Scissors";
             }
             return choice;
         }
@@ -257,16 +257,17 @@ namespace Project01
             string playerOneName, playerTwoName;
             char playerOneChoice, playerTwoChoice;
             char playTwo;
+            char cont = '0';
             PrintSmallHeader();
             Console.WriteLine();
             playerOneName = PromptForString("What is Player One's Name?: ");
             playerTwoName = PromptForString("What is Player Two's Name?: ");
             Console.WriteLine();
-            
+
             do
             {
 
-                Console.Clear(); 
+                Console.Clear();
                 PrintSmallHeader();
                 Console.WriteLine($"{playerOneName} VERSUS {playerTwoName}");
                 PrintRules();
@@ -276,19 +277,23 @@ namespace Project01
                 Console.WriteLine("Press 3 for Flying Leg Scissors");
                 do
                 {
-                        playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
-                } while ((playerOneChoice == 1) || (playerOneChoice == 2) || (playerOneChoice == 3));
+                    playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
+                    if (playerOneChoice == '1' || playerOneChoice == '2' || playerOneChoice == '3')
+                    {
+                        cont = '1';
+                    }
+                } while (cont != '1');//((playerOneChoice != '1') | (playerOneChoice != '2'));// || (playerOneChoice != '3')); ; ; ; ; ;
                 do
                 {
                     playerTwoChoice = PromptForCharHidden($"\n{playerTwoName} - > : ");
-                } while ((playerTwoChoice == 1) || (playerTwoChoice == 2) || (playerTwoChoice == 3));
+                } while ((playerTwoChoice != '2'));// | (playerTwoChoice != '2') | (playerTwoChoice != '3'));
                 Console.Clear();
                 //PrintSmallHeader();
                 PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
                 //Console.WriteLine("do you want to play again Y for Yes or N for No - > ");
                 //playTwo = Console.ReadKey();
                 playTwo = PromptForChar("do you want to play again y for yes or n for no - >");
-            } while(playTwo == 'y');
+            } while ((playTwo == 'Y') | (playTwo == 'y'));
 
 
             Console.Clear();
