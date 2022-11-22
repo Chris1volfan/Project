@@ -257,7 +257,6 @@ namespace Project01
             string playerOneName, playerTwoName;
             char playerOneChoice, playerTwoChoice;
             char playTwo;
-            //sbyte cont;
             PrintSmallHeader();
             Console.WriteLine();
             playerOneName = PromptForString("What is Player One's Name?: ");
@@ -278,16 +277,28 @@ namespace Project01
                 do
                 {
                     playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
-                    //if (playerOneChoice == '1' || playerOneChoice == '2' || playerOneChoice == '3')
-                    //{
-                    //    cont = 1;
-                    //}
-                } while ((playerOneChoice < 0) && (playerOneChoice > 3));
-                //} while (cont != '1');//((playerOneChoice != '1') | (playerOneChoice != '2'));// || (playerOneChoice != '3')); ; ; ; ; ;
+                    if (playerOneChoice == '1') 
+                    {
+                        break;
+                    }
+                    if (playerOneChoice == '2')
+                    {
+                        break;
+                    }
+                   
+                } while (playerOneChoice != '3');
                 do
                 {
                     playerTwoChoice = PromptForCharHidden($"\n{playerTwoName} - > : ");
-                } while ((playerTwoChoice < 0) && (playerTwoChoice > 3));// | (playerTwoChoice != '2') | (playerTwoChoice != '3'));
+                    if (playerTwoChoice == '1')
+                    {
+                        break;
+                    }
+                    if (playerTwoChoice == '2')
+                    {
+                        break;
+                    }
+                } while (playerTwoChoice != '3');
                 Console.Clear();
                 PrintSmallHeader();
                 PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
@@ -321,6 +332,11 @@ namespace Project01
             Console.WriteLine();
             Thread.Sleep(2000);
             Console.Clear();
+        }
+        static int Retint()
+        {
+            int retInt = 1;
+            return retInt;
         }
     }
 }
