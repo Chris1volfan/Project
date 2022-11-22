@@ -257,7 +257,7 @@ namespace Project01
             string playerOneName, playerTwoName;
             char playerOneChoice, playerTwoChoice;
             char playTwo;
-            char cont = '0';
+            //sbyte cont;
             PrintSmallHeader();
             Console.WriteLine();
             playerOneName = PromptForString("What is Player One's Name?: ");
@@ -278,17 +278,18 @@ namespace Project01
                 do
                 {
                     playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
-                    if (playerOneChoice == '1' || playerOneChoice == '2' || playerOneChoice == '3')
-                    {
-                        cont = '1';
-                    }
-                } while (cont != '1');//((playerOneChoice != '1') | (playerOneChoice != '2'));// || (playerOneChoice != '3')); ; ; ; ; ;
+                    //if (playerOneChoice == '1' || playerOneChoice == '2' || playerOneChoice == '3')
+                    //{
+                    //    cont = 1;
+                    //}
+                } while ((playerOneChoice < 0) && (playerOneChoice > 3));
+                //} while (cont != '1');//((playerOneChoice != '1') | (playerOneChoice != '2'));// || (playerOneChoice != '3')); ; ; ; ; ;
                 do
                 {
                     playerTwoChoice = PromptForCharHidden($"\n{playerTwoName} - > : ");
-                } while ((playerTwoChoice != '2'));// | (playerTwoChoice != '2') | (playerTwoChoice != '3'));
+                } while ((playerTwoChoice < 0) && (playerTwoChoice > 3));// | (playerTwoChoice != '2') | (playerTwoChoice != '3'));
                 Console.Clear();
-                //PrintSmallHeader();
+                PrintSmallHeader();
                 PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
                 //Console.WriteLine("do you want to play again Y for Yes or N for No - > ");
                 //playTwo = Console.ReadKey();
