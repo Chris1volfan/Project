@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Dynamic;
+using System.Runtime.CompilerServices;
 /// File: Project01.cs
 /// Name(s): Matthew Childress & Christopher Brown
 /// Class: CISP1010
@@ -10,7 +11,7 @@ namespace Project01
     /// This class is a simple Rock Paper Scissors game that uses multiple methods to show type conversions,
     /// selection statements, and loops.
     /// </summary>
-    internal class Project01
+    internal class Project02
     {
         /// <summary>
         /// this method is the main entry point into the game. It uses a do/while loop to execute menu choices unless 4 is picked.
@@ -114,6 +115,10 @@ namespace Project01
                 result = 0;
             }
             return result;
+
+            //declare arrays
+            //uint[] c3Choice = new uint[3];
+            // string[] strings = new string[4];
         }
         /// <summary>
         /// Given two player names and their choices. This method will print the results of a match.
@@ -222,6 +227,24 @@ namespace Project01
             Console.Clear();
             return choice;
         }
+        //Method for getting a random string value from a string array  
+
+        static string GetRandomString(string[] strings)
+        {
+            Random rand = new Random();
+            int index = rand.Next(strings.Length);
+
+            return strings[index];
+        }
+        //A method for chosing random character for a character array
+        static char GetRandomChrar(char[] chars)
+        {
+            Random rand = new Random();
+            int index = rand.Next(chars.Length);
+
+            return chars[index];
+        }
+
         /// <summary>
         /// A method that prints the rules of the game, indicating which hands win or lose.
         /// </summary>
@@ -243,11 +266,61 @@ namespace Project01
         /// </summary>
         static void OnePlayerMode()
         {
+            //declare arrays, including the amount of dice rolls
+            char[] chars = { '1', '2', '3' };
+            string[] strings = { "Killer Claw", "Dynamite Drop", "Jack Hammer", "SammySleeper" };
+            //create a object of type Random
+            //Random r = new Random();
+            string playerOneName, playerTwoName;
+            char playerOneChoice, playerTwoChoice;
+            char playOne;
             PrintSmallHeader();
-            Console.WriteLine("- - - - -One Player Coming Soon- - - - -");
-            Console.WriteLine("Look Out For it in the MEGA Rasslin' DLC");
-            Thread.Sleep(3000);
-            ShowMenu();
+            Console.WriteLine();
+            playerOneName = PromptForString("What is Player One's Name?: ");
+            //Get random Player Two Charcter name from the String array
+            playerTwoName = GetRandomString(strings);
+            
+
+            do
+            {
+
+                Console.Clear();
+                PrintSmallHeader();
+                Console.WriteLine($"{playerOneName} VERSUS {playerTwoName}");
+                PrintRules();
+                Console.WriteLine("--- Choose a value ---");
+                Console.WriteLine("Press 1 for a Rock Bottom");
+                Console.WriteLine("Press 2 for the Paper Tiger");
+                Console.WriteLine("Press 3 for Flying Leg Scissors");
+                do
+                {
+                    playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
+                    if (playerOneChoice == '1')
+                    {
+                        break;
+                    }
+                    if (playerOneChoice == '2')
+                    {
+                        break;
+                    }
+
+                } while (playerOneChoice != '3');
+               
+                
+                playerTwoChoice = GetRandomChrar(chars);
+                //GetRandomString(string[]);
+                Console.Clear();
+                PrintSmallHeader();
+
+                PrintResults(playerOneName, playerOneChoice, playerTwoName, playerTwoChoice);
+                //Console.WriteLine("do you want to play again Y for Yes or N for No - > ");
+                //playTwo = Console.ReadKey();
+                playOne = PromptForChar("do you want to play again y for yes or n for no - >");
+            } while ((playOne == 'Y') | (playOne == 'y'));
+
+
+            Console.Clear();
+
         }
         /// <summary>
         /// A method that runs the game with two players. Takes player inputs and uses separate methods to display results.
@@ -277,7 +350,7 @@ namespace Project01
                 do
                 {
                     playerOneChoice = PromptForCharHidden($"\n{playerOneName} - > : ");
-                    if (playerOneChoice == '1') 
+                    if (playerOneChoice == '1')
                     {
                         break;
                     }
@@ -285,7 +358,7 @@ namespace Project01
                     {
                         break;
                     }
-                   
+
                 } while (playerOneChoice != '3');
                 do
                 {
@@ -333,10 +406,5 @@ namespace Project01
             Thread.Sleep(2000);
             Console.Clear();
         }
-        static int Retint()
-        {
-            int retInt = 1;
-            return retInt;
-        }
-    }
+    }  
 }
