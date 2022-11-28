@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 /// Class: CISP1010
 /// Semester: Fall 2022
 /// Project: Mega Rasslin' Maniacs - Rock Bottom, Flying Leg Scissors & Paper Tiger
-namespace Project01
+namespace Project02
 {
     /// <summary>
     /// This class is a simple Rock Paper Scissors game that uses multiple methods to show type conversions,
