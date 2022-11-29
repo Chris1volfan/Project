@@ -1,6 +1,6 @@
 ﻿using System.Dynamic;
 using System.Runtime.CompilerServices;
-/// File: Project01.cs
+/// File: Project02.cs
 /// Name(s): Matthew Childress & Christopher Brown
 /// Class: CISP1010
 /// Semester: Fall 2022
@@ -14,7 +14,8 @@ namespace Project02
     internal class Project02
     {
         /// <summary>
-        /// this method is the main entry point into the game. It uses a do/while loop to execute menu choices unless 4 is picked.
+        /// this method is the main entry point into the game. It uses a do/while loop to execute
+        /// menu choices unless 4 (for exit) is picked.
         /// </summary>
         /// <param name="args">player inputs</param>
         static void Main(string[] args)
@@ -227,7 +228,7 @@ namespace Project02
             Console.Clear();
             return choice;
         }
-        //Method for getting a random string value from a string array  
+        //Method for chosing a random string value from a string array  
 
         static string GetRandomString(string[] strings)
         {
@@ -236,7 +237,7 @@ namespace Project02
 
             return strings[index];
         }
-        //A method for chosing random character for a character array
+        //A method for chosing a random character for a character array
         static char GetRandomChrar(char[] chars)
         {
             Random rand = new Random();
@@ -262,15 +263,16 @@ namespace Project02
         }
         // ui screens
         /// <summary>
-        /// A method that advertises a future single player DLC. returns player back to menu after 3 seconds.
+        /// A method that runs single player player one is the user against a random picked player two
+        /// name chosen from an array and a random picked choice from an array of charters 1,2, or 3.
+        /// The results are displayed from another method. The user is then given option to play again
+        /// by the choice of key board entry Y or y for yes, any other key entry exits, game mode.
         /// </summary>
         static void OnePlayerMode()
         {
-            //declare arrays, including the amount of dice rolls
+            //declare variables for one player game
             char[] chars = { '1', '2', '3' };
             string[] strings = { "Killer Claw", "Dynamite Drop", "Jack Hammer", "SammySleeper" };
-            //create a object of type Random
-            //Random r = new Random();
             string playerOneName, playerTwoName;
             char playerOneChoice, playerTwoChoice;
             char playOne;
@@ -324,6 +326,8 @@ namespace Project02
         }
         /// <summary>
         /// A method that runs the game with two players. Takes player inputs and uses separate methods to display results.
+        /// The users are then given the option to play again by keyboard entry of Y or y for yes,
+        /// any other keyboard entry exits game.
         /// </summary>
         static void TwoPlayerMode()
         {
