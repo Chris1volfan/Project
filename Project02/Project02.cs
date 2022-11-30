@@ -83,7 +83,7 @@ namespace Project02
             return Convert.ToString(Console.ReadLine());
         }
         /// <summary>
-        /// Preints a message to 'press any key to continue' and waits for the user to press enter
+        /// Prints a message to 'press any key to continue' and waits for the user to press enter
         /// </summary>
         static void PressAnyKey()
         {
@@ -228,8 +228,11 @@ namespace Project02
             Console.Clear();
             return choice;
         }
-        //Method for chosing a random string value from a string array  
-
+        /// <summary>
+        /// Method for chosing a random string value from a string array
+        /// </summary>
+        /// <param name="strings"></param>
+        /// <returns></returns>
         static string GetRandomString(string[] strings)
         {
             Random rand = new Random();
@@ -237,7 +240,11 @@ namespace Project02
 
             return strings[index];
         }
-        //A method for chosing a random character for a character array
+        /// <summary>
+        /// A method for chosing a random character for a character array
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <returns></returns>
         static char GetRandomChrar(char[] chars)
         {
             Random rand = new Random();
@@ -396,7 +403,6 @@ namespace Project02
             PrintRules();
             PressAnyKey();
             Console.Clear();
-            //ShowMenu();
         }
         /// <summary>
         /// A method that gives players an option to end the game.
